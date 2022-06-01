@@ -1,0 +1,24 @@
+{
+  "name": "restaurante-api",
+  "version": "1.0.0",
+  "description": "Desafio Back-End do Use Academy",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --inspect --ignore-watch node_modules src/server.ts",
+    "lint:fix": "eslint . --fix"
+  },
+  "author": "Thais Tiemi Ohashi",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "eslint": "^8.16.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2"
+  }
+}
