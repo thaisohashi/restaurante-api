@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { CreateCategoryDto } from '../dtos/category/create-category.dto';
 import { CreatedCategoryDto } from '../dtos/category/created-category.dto';
-import { UpdateCategoryDto } from '../dtos/category/update-category.dto';
 import { CategoryService } from '../services/category.service';
 import { HttpStatus } from '../utils/enums/http-status.enum';
 
