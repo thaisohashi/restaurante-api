@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import express, { Request, Response } from 'express';
 import { routes } from './routes';
 import { env } from './config/environment-variables';

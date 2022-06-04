@@ -1,7 +1,7 @@
 import { body, ValidationChain } from 'express-validator';
 import { RequestDto } from '../request-dto/request.dto';
 
-export class CreateCategoryDto extends RequestDto {
+export class UpdateCategoryDto extends RequestDto {
   name!: string;
 
   static validators(): ValidationChain[] {

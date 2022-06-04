@@ -1,10 +1,11 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: "categories" })
+@Entity({ name: 'categories' })
 export class CategoryEntity {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: "varchar", nullable: false })
+  @Column({ type: 'varchar', nullable: false })
   name!: string;
 }
