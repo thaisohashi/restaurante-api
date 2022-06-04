@@ -1,6 +1,7 @@
 import { DataSource, Repository } from 'typeorm';
 import { CreateCategoryDto } from '../dtos/category/create-category.dto';
 import { CreatedCategoryDto } from '../dtos/category/created-category.dto';
+import { UpdateCategoryDto } from '../dtos/category/update-category.dto';
 import { CategoryEntity } from '../entities/category.entity';
 import { HttpException } from '../handler-exceptions/http-exception.provider';
 import { HttpStatus } from '../utils/enums/http-status.enum';
@@ -68,7 +69,7 @@ export class CategoryService {
 
   async delete(id: string): Promise<void> {
     try {
-      await this.categoryRepository.delete(id);
+      await this.categoryRepository.delete({ id });
     } catch (error) {
       throw new HttpException(
         'Houve um erro ao deletar essa categoria!',

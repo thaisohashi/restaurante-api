@@ -1,15 +1,8 @@
-import { body, ValidationChain } from 'express-validator';
-import { RequestDto } from '../request-dto/request.dto';
+import { ValidationChain, body } from 'express-validator';
+import { CreateCategoryDto } from './create-category.dto';
 
-export class UpdateCategoryDto extends RequestDto {
-  name!: string;
-
+export class UpdateCategoryDto extends CreateCategoryDto {
   static validators(): ValidationChain[] {
-    return [
-      body('name', 'Valor name não é uma string!').isString(),
-      body('name', 'O campo name é obrigatório!')
-        .not()
-        .isEmpty({ ignore_whitespace: true }),
-    ];
+    return [body('name', 'Valor name não é uma string!').isString()];
   }
 }

@@ -30,12 +30,9 @@ export class CategoryController {
     return response.status(HttpStatus.OK).json(category);
   }
 
-  async update(
-    { params, body }: Request,
-    response: Response,
-  ): Promise<Response<UpdateCategoryDto>> {
-    const category = await this.categoryService.update(params.id, body.name);
-    return response.status(HttpStatus.NO_CONTENT).json(category);
+  async update({ body: category, params }: Request, response: Response) {
+    await this.categoryService.update(params.id, category.name);
+    return response.status(HttpStatus.NO_CONTENT).json();
   }
 
   async delete({ params }: Request, response: Response) {

@@ -2,6 +2,7 @@ import { Router, Request, Response, NextFunction } from 'express';
 import { AppDataSource } from './config/data-source';
 import { CategoryController } from './controllers/category.controller';
 import { CreateCategoryDto } from './dtos/category/create-category.dto';
+import { UpdateCategoryDto } from './dtos/category/update-category.dto';
 import { validator } from './middlewares';
 import { CategoryService } from './services/category.service';
 
@@ -51,6 +52,8 @@ routes.get(
 //ROTA PARA ATUALIZAR A CATEGORIA, PEGO O ID PARA SABER QUAL CATEGORIA VAI ATUALIZAR
 routes.put(
   '/categories/:id',
+  UpdateCategoryDto.validators(),
+  validator,
   (request: Request, response: Response, next: NextFunction) => {
     categoryController.update(request, response).catch((error: Error) => {
       next(error);
