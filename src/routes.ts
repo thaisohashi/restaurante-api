@@ -1,6 +1,8 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import { AppDataSource } from './config/data-source';
 import { CategoryController } from './controllers/category.controller';
+import { CreateCategoryDto } from './dtos/category/create-category.dto';
+import { validator } from './middlewares';
 import { CategoryService } from './services/category.service';
 
 const routes = Router(); //CRIACAO DE ROTAS A PARTIR DO ROUTER
@@ -27,6 +29,8 @@ routes.get(
 //ROTA POST PARA INSERIR UMA NOVA CATEGORIA DENTRO DA VARIÁVEL CATEGORIES
 routes.post(
   '/categories',
+  CreateCategoryDto.validators(),
+  validator,
   (request: Request, response: Response, next: NextFunction) => {
     categoryController.create(request, response).catch((error: Error) => {
       next(error);
