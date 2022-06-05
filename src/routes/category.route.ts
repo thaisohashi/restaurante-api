@@ -6,18 +6,16 @@ import { UpdateCategoryDto } from '../dtos/category/update-category.dto';
 import { validator } from '../middlewares';
 import { CategoryService } from '../services/category.service';
 
-const categoryRoutes = Router(); //CRIACAO DE ROTAS A PARTIR DO ROUTER
+const categoryRoutes = Router();
 
 const categoryController = new CategoryController(
   new CategoryService(AppDataSource),
 );
 
-//CRIACAO DO PRIMEIRO ENDPOINT PARA VERIFICAR STATUS DO SERVIDOR
 categoryRoutes.get('/', (request: Request, response: Response) => {
   return response.status(200).json({ status: 'success', version: '1.0.0' });
 });
 
-//CRIACAO DE ENDPOINT (ROTA) PARA RETORNAR TODAS AS CATEGORIAS
 categoryRoutes.get(
   '/categories',
   (request: Request, response: Response, next: NextFunction) => {
@@ -27,7 +25,6 @@ categoryRoutes.get(
   },
 );
 
-//ROTA POST PARA INSERIR UMA NOVA CATEGORIA DENTRO DA VARIÁVEL CATEGORIES
 categoryRoutes.post(
   '/categories',
   CreateCategoryDto.validators(),
@@ -39,7 +36,6 @@ categoryRoutes.post(
   },
 );
 
-//ROTA QUE RETORNA UMA ÚNICA CATEGORIA SELECIONADA
 categoryRoutes.get(
   '/categories/:id',
   (request: Request, response: Response, next: NextFunction) => {
@@ -49,7 +45,6 @@ categoryRoutes.get(
   },
 );
 
-//ROTA PARA ATUALIZAR A CATEGORIA, PEGO O ID PARA SABER QUAL CATEGORIA VAI ATUALIZAR
 categoryRoutes.put(
   '/categories/:id',
   UpdateCategoryDto.validators(),
@@ -61,7 +56,6 @@ categoryRoutes.put(
   },
 );
 
-//ROTA PARA DELETAR UMA CATEGORIA, PEGO O ID PARA SABER QUAL CATEGORIA VAI DELETAR
 categoryRoutes.delete(
   '/categories/:id',
   (request: Request, response: Response, next: NextFunction) => {

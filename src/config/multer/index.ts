@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { diskStorage, FileFilterCallback, Options } from 'multer';
 import { Request } from 'express';
 import { resolve } from 'path';

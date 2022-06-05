@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import express from 'express';
 import { categoryRoutes } from './routes/category.route';
 import { productRoutes } from './routes/product.route';

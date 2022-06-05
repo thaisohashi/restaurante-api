@@ -18,7 +18,7 @@ export class CategoryService {
       return categories.map((category) => new CreatedCategoryDto(category));
     } catch (error) {
       throw new HttpException(
-        'Houve um erro ao listar categorias!',
+        'Houve um erro ao listar as categorias!',
         HttpStatus.BAD_REQUEST,
       );
     }
@@ -49,7 +49,7 @@ export class CategoryService {
       return new CreatedCategoryDto(savedCategory);
     } catch (error) {
       throw new HttpException(
-        'Houve um erro ao adicionar a categoria!',
+        'Houve um erro ao cadastrar a categoria!',
         HttpStatus.BAD_REQUEST,
       );
     }

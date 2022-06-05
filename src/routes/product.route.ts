@@ -8,13 +8,12 @@ import { UpdateProductDto } from '../dtos/product/update-product.dto';
 import { validator } from '../middlewares';
 import { ProductService } from '../services/product.service';
 
-const productRoutes = Router(); //CRIACAO DE ROTAS A PARTIR DO ROUTER
+const productRoutes = Router();
 
 const productController = new ProductController(
   new ProductService(AppDataSource),
 );
 
-//ENDPOINT PARA LISTAR TODOS OS PRODUTOS
 productRoutes.get(
   '/products',
   (request: Request, response: Response, next: NextFunction) => {
@@ -24,7 +23,6 @@ productRoutes.get(
   },
 );
 
-//ENDPOINT PARA CADASTRAR UM NOVO PRODUTO
 productRoutes.post(
   '/products',
   multer(multerConfig).single('image'),
@@ -37,7 +35,6 @@ productRoutes.post(
   },
 );
 
-//ENDPOINT QUE RETORNA UM ÚNICO PRODUTO SELECIONADO
 productRoutes.get(
   '/products/:id',
   (request: Request, response: Response, next: NextFunction) => {
@@ -47,7 +44,6 @@ productRoutes.get(
   },
 );
 
-//ENDPOINT PARA ATUALIZAR PRODUTO
 productRoutes.put(
   '/products/:id',
   UpdateProductDto.validators(),
@@ -59,7 +55,6 @@ productRoutes.put(
   },
 );
 
-//ENDPOINT PARA DELETAR UM PRODUTO
 productRoutes.delete(
   '/products/:id',
   (request: Request, response: Response, next: NextFunction) => {
