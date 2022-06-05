@@ -5,6 +5,7 @@ export class CreateProductDto extends RequestDto {
   name!: string;
   description!: string;
   value!: number;
+  person_count!: number;
   disponibility!: boolean;
   image!: string;
   categoryId!: string;
@@ -24,6 +25,17 @@ export class CreateProductDto extends RequestDto {
       }),
       body('value', 'O campo value deve ser um número!').isNumeric(),
       body('value', 'O campo value é obrigatório!').notEmpty({
+        ignore_whitespace: true,
+      }),
+      body(
+        'person_count',
+        'O campo person_count deve ser um número inteiro!',
+      ).isInt(),
+      body(
+        'person_count',
+        'O campo person_count deve ser um número!',
+      ).isNumeric(),
+      body('person_count', 'O campo person_count é obrigatório!').notEmpty({
         ignore_whitespace: true,
       }),
       body(

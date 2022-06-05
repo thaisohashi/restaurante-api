@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { CategoryEntity } from './category.entity';
 
@@ -21,11 +23,14 @@ export class ProductEntity {
   @Column({ type: 'float', nullable: false })
   value!: number;
 
-  @Column({ type: 'varchar', nullable: false })
-  image!: string;
+  @Column({ type: 'int', nullable: false })
+  person_count!: number;
 
   @Column({ type: 'boolean', nullable: false })
   disponibility!: boolean;
+
+  @Column({ type: 'varchar', nullable: false })
+  image!: string;
 
   @ManyToOne(() => CategoryEntity, (category) => category.products, {
     onDelete: 'CASCADE',
@@ -33,4 +38,10 @@ export class ProductEntity {
   })
   @JoinColumn({ name: 'category_id', referencedColumnName: 'id' })
   category!: CategoryEntity;
+
+  @CreateDateColumn()
+  created_at?: Date;
+
+  @UpdateDateColumn()
+  updated_at?: Date;
 }

@@ -41,25 +41,27 @@ export class ProductService {
       return new CreatedProductDto(product);
     } catch (error) {
       throw new HttpException(
-        'Houve um erro ao procurar esse produto!',
+        'Houve um erro ao procurar o produto!',
         HttpStatus.BAD_REQUEST,
       );
     }
   }
 
   async create({
-    categoryId,
+    name,
     description,
+    value,
+    person_count,
     disponibility,
     image,
-    name,
-    value,
+    categoryId,
   }: CreateProductDto): Promise<CreatedProductDto> {
     try {
       const createProduct = this.productRepository.create({
         name,
         description,
         value,
+        person_count,
         disponibility,
         image,
         category: { id: categoryId },
@@ -69,7 +71,7 @@ export class ProductService {
     } catch (error) {
       console.log(error);
       throw new HttpException(
-        'Houve um erro ao cadastrar um produto!',
+        'Houve um erro ao cadastrar o produto!',
         HttpStatus.BAD_REQUEST,
       );
     }
@@ -91,7 +93,7 @@ export class ProductService {
       await this.productRepository.delete({ id });
     } catch (error) {
       throw new HttpException(
-        'Houve um erro ao deletar esse produto!',
+        'Houve um erro ao deletar o produto!',
         HttpStatus.BAD_REQUEST,
       );
     }
