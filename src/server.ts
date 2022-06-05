@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import express from 'express';
-import { routes } from './routes';
+import { routes } from './routes/category.route';
 import { env } from './config/environment-variables';
 import { AppDataSource } from './config/data-source';
 import { errorHandler } from './middlewares';

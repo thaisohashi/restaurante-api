@@ -36,7 +36,7 @@ export class CategoryService {
       return new CreatedCategoryDto({ id: category.id, name: category.name });
     } catch (error) {
       throw new HttpException(
-        'Houve um erro ao procurar essa categoria!',
+        'Houve um erro ao procurar a categoria!',
         HttpStatus.BAD_REQUEST,
       );
     }
@@ -49,7 +49,7 @@ export class CategoryService {
       return new CreatedCategoryDto(savedCategory);
     } catch (error) {
       throw new HttpException(
-        'Houve um erro ao adicionar uma categoria!',
+        'Houve um erro ao adicionar a categoria!',
         HttpStatus.BAD_REQUEST,
       );
     }
@@ -71,7 +71,7 @@ export class CategoryService {
       await this.categoryRepository.delete({ id });
     } catch (error) {
       throw new HttpException(
-        'Houve um erro ao deletar essa categoria!',
+        'Houve um erro ao deletar a categoria!',
         HttpStatus.BAD_REQUEST,
       );
     }
