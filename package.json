@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Desafio Back-End do Use Academy",
   "main": "dist/server.js",
+  "engines": {
+    "node": "17.x",
+    "npm": "8.x"
+  },
   "scripts": {
     "start": "tsc && node dist/server.js",
     "dev": "ts-node-dev --respawn --inspect --ignore-watch node_modules src/server.ts",
@@ -29,6 +33,7 @@
     "prettier": "^2.6.2",
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.0.8",
+    "ts-node": "^10.8.1",
     "typeorm": "^0.3.6"
   }
 }
