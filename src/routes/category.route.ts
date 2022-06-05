@@ -6,19 +6,19 @@ import { UpdateCategoryDto } from '../dtos/category/update-category.dto';
 import { validator } from '../middlewares';
 import { CategoryService } from '../services/category.service';
 
-const routes = Router(); //CRIACAO DE ROTAS A PARTIR DO ROUTER
+const categoryRoutes = Router(); //CRIACAO DE ROTAS A PARTIR DO ROUTER
 
 const categoryController = new CategoryController(
   new CategoryService(AppDataSource),
 );
 
 //CRIACAO DO PRIMEIRO ENDPOINT PARA VERIFICAR STATUS DO SERVIDOR
-routes.get('/', (request: Request, response: Response) => {
+categoryRoutes.get('/', (request: Request, response: Response) => {
   return response.status(200).json({ status: 'success', version: '1.0.0' });
 });
 
 //CRIACAO DE ENDPOINT (ROTA) PARA RETORNAR TODAS AS CATEGORIAS
-routes.get(
+categoryRoutes.get(
   '/categories',
   (request: Request, response: Response, next: NextFunction) => {
     categoryController.getAll(request, response).catch((error: Error) => {
@@ -28,7 +28,7 @@ routes.get(
 );
 
 //ROTA POST PARA INSERIR UMA NOVA CATEGORIA DENTRO DA VARIÁVEL CATEGORIES
-routes.post(
+categoryRoutes.post(
   '/categories',
   CreateCategoryDto.validators(),
   validator,
@@ -40,7 +40,7 @@ routes.post(
 );
 
 //ROTA QUE RETORNA UMA ÚNICA CATEGORIA SELECIONADA
-routes.get(
+categoryRoutes.get(
   '/categories/:id',
   (request: Request, response: Response, next: NextFunction) => {
     categoryController.show(request, response).catch((error: Error) => {
@@ -50,7 +50,7 @@ routes.get(
 );
 
 //ROTA PARA ATUALIZAR A CATEGORIA, PEGO O ID PARA SABER QUAL CATEGORIA VAI ATUALIZAR
-routes.put(
+categoryRoutes.put(
   '/categories/:id',
   UpdateCategoryDto.validators(),
   validator,
@@ -62,7 +62,7 @@ routes.put(
 );
 
 //ROTA PARA DELETAR UMA CATEGORIA, PEGO O ID PARA SABER QUAL CATEGORIA VAI DELETAR
-routes.delete(
+categoryRoutes.delete(
   '/categories/:id',
   (request: Request, response: Response, next: NextFunction) => {
     categoryController.delete(request, response).catch((error: Error) => {
@@ -71,4 +71,4 @@ routes.delete(
   },
 );
 
-export { routes };
+export { categoryRoutes };

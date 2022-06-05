@@ -8,14 +8,14 @@ import { UpdateProductDto } from '../dtos/product/update-product.dto';
 import { validator } from '../middlewares';
 import { ProductService } from '../services/product.service';
 
-const routes = Router(); //CRIACAO DE ROTAS A PARTIR DO ROUTER
+const productRoutes = Router(); //CRIACAO DE ROTAS A PARTIR DO ROUTER
 
 const productController = new ProductController(
   new ProductService(AppDataSource),
 );
 
 //ENDPOINT PARA LISTAR TODOS OS PRODUTOS
-routes.get(
+productRoutes.get(
   '/products',
   (request: Request, response: Response, next: NextFunction) => {
     productController.getAll(request, response).catch((error: Error) => {
@@ -25,7 +25,7 @@ routes.get(
 );
 
 //ENDPOINT PARA CADASTRAR UM NOVO PRODUTO
-routes.post(
+productRoutes.post(
   '/products',
   multer(multerConfig).single('image'),
   CreateProductDto.validators(),
@@ -38,7 +38,7 @@ routes.post(
 );
 
 //ENDPOINT QUE RETORNA UM ÚNICO PRODUTO SELECIONADO
-routes.get(
+productRoutes.get(
   '/products/:id',
   (request: Request, response: Response, next: NextFunction) => {
     productController.show(request, response).catch((error: Error) => {
@@ -48,7 +48,7 @@ routes.get(
 );
 
 //ENDPOINT PARA ATUALIZAR PRODUTO
-routes.put(
+productRoutes.put(
   '/products/:id',
   UpdateProductDto.validators(),
   validator,
@@ -60,7 +60,7 @@ routes.put(
 );
 
 //ENDPOINT PARA DELETAR UM PRODUTO
-routes.delete(
+productRoutes.delete(
   '/products/:id',
   (request: Request, response: Response, next: NextFunction) => {
     productController.delete(request, response).catch((error: Error) => {
@@ -69,4 +69,4 @@ routes.delete(
   },
 );
 
-export { routes };
+export { productRoutes };
