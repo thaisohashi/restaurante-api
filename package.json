@@ -2,8 +2,9 @@
   "name": "restaurante-api",
   "version": "1.0.0",
   "description": "Desafio Back-End do Use Academy",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
+    "start": "tsc && node dist/server.js",
     "dev": "ts-node-dev --respawn --inspect --ignore-watch node_modules src/server.ts",
     "lint:fix": "eslint . --fix"
   },

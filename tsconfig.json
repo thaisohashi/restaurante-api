@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "target": "ESNext", 
-    "sourceMap": true, 
+    "target": "ESNext",
+    "sourceMap": true,
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./src",   
-    "esModuleInterop": true,   
+    "rootDir": "./src",
+    "esModuleInterop": true,
     "strict": true,
-    "skipLibCheck": true,
-  }
+    "skipLibCheck": true
+  },
+  "include": ["src"]
 }
